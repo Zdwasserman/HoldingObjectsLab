@@ -56,7 +56,23 @@ public class PhoneBookTest {
         assertEquals(expected, actual);
     }
     @Test
-    public void displayPhoneBook(){
-
+    public void reverseLookUpTest(){
+        PhoneBook book = new PhoneBook();
+        book.add("Zach", "111 111-1111");
+        book.add("bob", "222 222-2222");
+        book.remove("fred");
+        String actual = book.reverseLookUp("111 111-1111");
+        String expected = "Zach";
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void reverseLookUpFailedTest(){
+        PhoneBook book = new PhoneBook();
+        book.add("Zach", "111 111-1111");
+        book.add("bob", "222 222-2222");
+        book.remove("fred");
+        String actual = book.reverseLookUp("111 111-1112");
+        String expected = "Number not found int book";
+        assertEquals(expected, actual);
     }
 }
