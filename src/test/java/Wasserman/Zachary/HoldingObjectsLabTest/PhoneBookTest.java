@@ -2,8 +2,8 @@ package Wasserman.Zachary.HoldingObjectsLabTest;
 
 import HoldingObjectsLab.PhoneBook;
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 import org.junit.Test;
-
 import java.util.HashMap;
 
 public class PhoneBookTest {
@@ -29,7 +29,8 @@ public class PhoneBookTest {
     @Test
     public void add() {
         PhoneBook book = new PhoneBook();
-        //HashMap phoneBook = new HashMap();
+        HashMap phoneBook = new HashMap();
+        ArrayList numbers = new ArrayList();
         book.add("Zach", "111 111-1111");
         int actual = book.phoneBook.size();
         int expected = 1;
@@ -38,7 +39,7 @@ public class PhoneBookTest {
     @Test
     public void remove(){
         PhoneBook book = new PhoneBook();
-        book.add("Zach", "111 111-1111");
+        book.add("Zach","111 111-1111");
         book.add("bob", "222 222-2222");
         book.remove("bob");
         int actual = book.phoneBook.size();
@@ -68,11 +69,12 @@ public class PhoneBookTest {
     @Test
     public void reverseLookUpFailedTest(){
         PhoneBook book = new PhoneBook();
+
         book.add("Zach", "111 111-1111");
         book.add("bob", "222 222-2222");
         book.remove("fred");
         String actual = book.reverseLookUp("111 111-1112");
-        String expected = "Number not found int book";
+        String expected = "Number not found in book";
         assertEquals(expected, actual);
     }
 }
